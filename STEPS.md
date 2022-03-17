@@ -103,30 +103,33 @@ The variables will be filled by the default-value.
 |Company |KargWare             | The company is part of the namespaces and folder structure|
 |Project |JekyllPlugInTemplate | The project is part of the namespaces and folder structure|
 
+| Key         | Default             | Transform           |
+|-------------|---------------------|---------------------|
+| Company     | KargWare            | pascalcase          |
+| Project     | NewPlugIn           | pascalcase          |
+| ProjectName | jekyll-kw-newplugin | lowercase paramcase |
+
 The file `jekyll-plugin-template.code-workspace` is part of the template and will not be generated.
 
-In the text below are the variables wrapped with `<<VarName>>`. 
+In the text below are the variables wrapped with `<<VarName>>` without transformations. 
 
 ```text
 ├── .gitignore
-├── .rubocop.yml
+├── .whitesource
 ├── Gemfile
 ├── Gemfile.lock
+├── NextSteps.md
 ├── Rakefile
-├── jekyll-<<Company>>-<<Project>>.gemspec
+├── <<ProjectName>>.gemspec
 ├── lib
-│   └── jekyll
-│       └── <<Company>>
-│           ├── <<Project>>
-│           │   ├── configuration.rb
-│           │   └── version.rb
-│           └── <<Project>>.rb
+│   ├── <<ProjectName>>
+│   │   ├── configuration.rb
+│   │   └── version.rb
+│   └── <<ProjectName>>.rb
 └── test
-    ├── jekyll
-    │   └── <<Company>>
-    │       └── <<Project>>
-    │           ├── configuration_test.rb
-    │           └── version_test.rb
+    ├── <<ProjectName>>
+    │   ├── configuration_test.rb
+    │   └── version_test.rb
     └── test_helper.rb
 ```
 
