@@ -42,7 +42,7 @@ plugins:
 
 * ...
 * Build GitHub CI workflows
-* Prepare CI-workflow with Appraisal `bundle exec appraisal install`
+* Prepare CI-workflow with Appraisal `bundle exec appraisal generate`
 * 0.0.2 Read the [NextSteps.md](NextSteps.md) and follow the introduction steps
 * 0.0.1 Install [Visual Studio Extension - Folder Templates](https://marketplace.visualstudio.com/items?itemName=Huuums.vscode-fast-folder-structure), and run `NewJekyllPlugInAsRubyGem` to get the a skeleton project from template
 * 0.0.0 Create project `jekyll-kw-loremipsum` from [template][GitHub jekyll-plugin-template]

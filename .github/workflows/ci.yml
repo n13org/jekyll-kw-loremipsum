@@ -1,0 +1,74 @@
+name: CI
+on: 
+  push:
+    branches:
+      - "*"
+    tags-ignore:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+    tags-ignore:
+      - "*"
+jobs:  
+  pre-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle config set --local with ci
+          bundle install --jobs 4 --retry 3
+      - name: Generate appraisal files
+        run: bundle exec appraisal generate
+      - uses: actions/upload-artifact@v2
+        with:
+          name: appraisal-files
+          path: gemfiles/
+          if-no-files-found: error
+          retention-days: 1
+  build:
+    needs: pre-build
+    strategy:
+      matrix:
+        # ruby: [2.5, 2.6, 2.7, 3.0]
+        ruby: [2.5, 2.6, 2.7]
+        gemfile:
+          - gemfiles/jekyll_3.8.gemfile
+          - gemfiles/jekyll_3.9.gemfile
+          - gemfiles/jekyll_4.0.gemfile
+          - gemfiles/jekyll_4.1.gemfile
+          - gemfiles/jekyll_4.2.gemfile
+        exclude:
+        - ruby: 2.5
+          gemfile: gemfiles/jekyll_4.0.gemfile
+        - ruby: 2.5
+          gemfile: gemfiles/jekyll_4.1.gemfile
+        - ruby: 2.5
+          gemfile: gemfiles/jekyll_4.2.gemfile
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Create folder 'gemfiles'
+      run: mkdir -p gemfiles/
+    - uses: actions/download-artifact@v2
+      with:
+        name: appraisal-files
+        path: gemfiles/
+    - name: bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: Run Test
+      run: bundle exec rake test
