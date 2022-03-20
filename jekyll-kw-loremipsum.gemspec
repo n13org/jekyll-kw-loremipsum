@@ -6,6 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Nicolas Karg', 'n13.org - Open-Source by KargWare']
   spec.email         = ["rubygems.org@n13.org"]
   spec.homepage      = "https://notes.n13.org/rubygems"
+  spec.license       = 'MIT'
 
   spec.summary       = %q{LoremIpsum is a jekyll tag-plugin.}
   spec.description   = <<-LONGDESCRIPTION
@@ -21,8 +22,11 @@ Gem::Specification.new do |spec|
     'source_code_uri' => 'https://github.com/n13org/jekyll-kw-loremipsum'
   }
 
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
-  spec.add_dependency 'jekyll', '>= 3.8'
+  # spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  # spec.add_dependency 'jekyll', '~> 3.8'
+
+  spec.required_ruby_version = '>= 2.5'
+  spec.add_dependency 'jekyll', '>= 3.8', '<= 4.2.2'
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.files         = Dir[
