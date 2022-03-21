@@ -4,6 +4,9 @@
 ![Coverage](https://github.com/n13org/jekyll-kw-loremipsum/workflows/Coverage/badge.svg)
 ![RuboCop](https://github.com/n13org/jekyll-kw-loremipsum/workflows/RuboCop/badge.svg)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/dec6df8009e83158a564/maintainability)](https://codeclimate.com/github/n13org/jekyll-kw-loremipsum/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dec6df8009e83158a564/test_coverage)](https://codeclimate.com/github/n13org/jekyll-kw-loremipsum/test_coverage)
+
 [![Gem Version](https://badge.fury.io/rb/jekyll-kw-loremipsum.svg)](https://badge.fury.io/rb/jekyll-kw-loremipsum)
 
 LoremIpsum is a [jekyll][Jekyll Website] plugin. The plugin can be used as a **tag** for jekyll. You can get some dummy text for your webpage, without copy & pasting the Lorem Ipsum words yourself.
