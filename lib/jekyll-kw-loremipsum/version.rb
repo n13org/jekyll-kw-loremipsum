@@ -5,6 +5,7 @@ module Jekyll
     module LoremIpsum
       RUBYGEM_NAME = 'jekyll-kw-loremipsum'
       VERSION = '0.1.1'
+      JEKYLL_TAGNAME = 'kw_lorem_ipsum'
     end
   end
 end
