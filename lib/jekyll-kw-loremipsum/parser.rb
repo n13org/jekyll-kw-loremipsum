@@ -47,7 +47,12 @@ module Jekyll
             Jekyll::KargWare::LoremIpsum::Parser.get_words(parameters.words, parameters.random)
           else
             arr_oneliner = []
-            for i in 1..parameters.paras
+            # for i in 1..parameters.paras
+            #   r = rand(parameters.minw..parameters.maxw)
+            #   arr_oneliner += [Jekyll::KargWare::LoremIpsum::Parser.get_words(r, parameters.random)]
+            # end
+
+            (1..parameters.paras).each do
               r = rand(parameters.minw..parameters.maxw)
               arr_oneliner += [Jekyll::KargWare::LoremIpsum::Parser.get_words(r, parameters.random)]
             end
