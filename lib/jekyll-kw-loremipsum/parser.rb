@@ -1,77 +1,55 @@
 # frozen_string_literal: true
 
+require 'jekyll-kw-loremipsum/parser_parameter'
+
 module Jekyll
   module KargWare
     module LoremIpsum
       # LoremIpsum parser class
       class Parser
+        attr_reader :config
+
         # https://loremipsum.de/downloads/original.txt
-        @@words_lorem_ipsum = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        @@words_lorem_ipsum = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
         # @@words_lorem_ipsum = "Lorem ipsum dolor sit amet, consetetur sadipscing"
 
         @@arr_words_lorem_ipsum = nil
         def self.arr_words_lorem_ipsum
-          if @@arr_words_lorem_ipsum == nil
-            @@arr_words_lorem_ipsum = @@words_lorem_ipsum.split(" ")
-          end
+          @@arr_words_lorem_ipsum = @@words_lorem_ipsum.split(' ') if @@arr_words_lorem_ipsum.nil?
           @@arr_words_lorem_ipsum
         end
 
-        def self.get_words(cnt, random=false)
-          if random
-            arr_part = self.arr_words_lorem_ipsum.sample(cnt)
+        def self.get_words(cnt, random = false)
+          arr_part = if random
+                       arr_words_lorem_ipsum.sample(cnt)
+                     else
+                       arr_words_lorem_ipsum.slice(0, cnt)
+                     end
+
+          arr_part.join(' ').chomp(',')
+        end
+
+        def self.create_parameters(input)
+          parameters = ParserParameter.new
+          parameters.init(input)
+          parameters
+        end
+
+        def initialize(options = {})
+          @config = Jekyll::KargWare::LoremIpsum::Configuration.new(options)
+        end
+
+        # TODO: Fucntion "get_lorem_ipsum" should be parse
+        def get_lorem_ipsum(input)
+          parameters = Jekyll::KargWare::LoremIpsum::Parser.create_parameters(input)
+
+          if parameters.use_words
+            Jekyll::KargWare::LoremIpsum::Parser.get_words(parameters.words, parameters.random)
           else
-            arr_part = self.arr_words_lorem_ipsum.slice(0, cnt)
-          end
-
-          arr_part.join(" ").chomp(",")
-        end
-
-        def initialize(config)
-          @config = config
-
-          match_parameters(@config)
-        end
-
-        def match_parameters(str)
-          # 1w    ==  1 word (default 40)
-          @words = 40
-          # 3p    ==  3 paragraphs (default -1)
-          # 7miw  ==  7 Min words in para (default 40)
-          # 15maw == 15 Max words in para (default 40)
-          @paras = -1
-          @minw = 40
-          @maxw = 40
-          # random == Should the words be random (or ordered) (default false)
-          @random = false
-
-          matched_words = str.strip.match(/\d+w/)
-          matched_paras = str.strip.match(/\d+p/)
-          matched_minw = str.strip.match(/\d+miw/)
-          matched_maxw = str.strip.match(/\d+maw/)
-          matched_random = str.strip.match(/random/)
-
-          # puts "Parser: W: %s P: %s MiW: %s MaW: %s Random: $s" % [matched_words, matched_paras, matched_minw, matched_maxw, matched_random]
-
-          @words = matched_words[0].strip.sub("w", "").to_i if matched_words
-          @paras = matched_paras[0].strip.sub("p", "").to_i if matched_paras
-          @minw = matched_minw[0].strip.sub("miw", "").to_i if matched_minw
-          @maxw = matched_maxw[0].strip.sub("maw", "").to_i if matched_maxw
-          @random = true if matched_random
-        end
-
-        def echo_config
-          puts "%s (%s) - W: %04d P: %04d MiW: %04d MaW: %04d" % [@paras == -1 ? "Words" : "Paras", @random, @words, @paras, @minw, @maxw]
-        end
-
-        def get_lorem_ipsum
-          if @paras == -1
-            Jekyll::KargWare::LoremIpsum::Parser.get_words(@words, @random)
-          else
-            arr_oneliner = Array.new
-            for i in 1..@paras
-              r = rand(@minw..@maxw)
-              arr_oneliner += [Jekyll::KargWare::LoremIpsum::Parser.get_words(r, @random)]
+            arr_oneliner = []
+            for i in 1..parameters.paras
+              r = rand(parameters.minw..parameters.maxw)
+              arr_oneliner += [Jekyll::KargWare::LoremIpsum::Parser.get_words(r, parameters.random)]
             end
             # arr_oneliner.join("\n") # No line wrap
             # arr_oneliner.join("<br>") # OK, but no 2nd p
