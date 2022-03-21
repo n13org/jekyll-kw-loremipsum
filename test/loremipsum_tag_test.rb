@@ -64,7 +64,9 @@ module Jekyll
             Liquid::ParseContext.new
           )
 
-          assert_equal('Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor', tag.render(context))
+          delimiter = "\n\n"
+
+          assert_equal "Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}", tag.render(context)
         end
       end
     end
