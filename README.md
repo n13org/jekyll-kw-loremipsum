@@ -37,7 +37,7 @@ plugins:
   - jekyll-kw-loremipsum
 ```
 
-> The Plug-In is tested with jekyll 3.8, 3.9, 4.0 and 4.1!
+> The Plug-In is tested with jekyll 3.8, 3.9, 4.0, 4.1 and 4.2!
 
 ## 🔥 Usage
 
