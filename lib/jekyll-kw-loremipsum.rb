@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require 'jekyll-kw-loremipsum/configuration'
 require 'jekyll-kw-loremipsum/parser'
+require 'jekyll-kw-loremipsum/version'
 
 module Jekyll
   module KargWare
