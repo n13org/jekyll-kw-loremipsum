@@ -6,6 +6,7 @@ require 'jekyll-kw-loremipsum/version'
 
 module Jekyll
   module KargWare
+    # LoremIpsum a Jekyll PlugIn inside `Jekyll::KargWare`
     module LoremIpsum
       class Error < StandardError; end
       class Exception < Gem::Exception; end
