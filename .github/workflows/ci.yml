@@ -16,9 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby 2.7
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
+          bundler-cache: true
       - name: bundle install
         run: |
           gem install bundler
@@ -40,11 +41,11 @@ jobs:
         # ruby: [2.5, 2.6, 2.7]
         ruby: [2.7, 3.0, 3.1]
         gemfile:
-          - gemfiles/jekyll_3.8.gemfile
-          - gemfiles/jekyll_3.9.gemfile
-          - gemfiles/jekyll_4.0.gemfile
-          - gemfiles/jekyll_4.1.gemfile
-          - gemfiles/jekyll_4.2.gemfile
+          - jekyll_3.8
+          - jekyll_3.9
+          - jekyll_4.0
+          - jekyll_4.1
+          - jekyll_4.2
         exclude:
         - ruby: 2.5
           gemfile: gemfiles/jekyll_4.0.gemfile
@@ -53,12 +54,12 @@ jobs:
         - ruby: 2.5
           gemfile: gemfiles/jekyll_4.2.gemfile
     env:
-      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
     - name: Create folder 'gemfiles'
