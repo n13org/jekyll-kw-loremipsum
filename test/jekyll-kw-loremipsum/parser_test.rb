@@ -78,8 +78,10 @@ module Jekyll
         def test_parser_four_paragraphs_three_non_random_words
           parser = Jekyll::KargWare::LoremIpsum::Parser.new
 
+          delimiter = "\n\n"
+
           # assert_equal 'Lorem ipsum dolor \n\n Lorem ipsum dolor \n\n Lorem ipsum dolor \n\n Lorem ipsum dolor', parser.get_lorem_ipsum
-          assert_equal 'Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor' + "\n\n" + 'Lorem ipsum dolor', parser.get_lorem_ipsum('4p 3miw 3maw')
+          assert_equal "Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor", parser.get_lorem_ipsum('4p 3miw 3maw')
         end
       end
     end
