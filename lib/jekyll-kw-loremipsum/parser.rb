@@ -15,7 +15,7 @@ module Jekyll
 
         @@arr_words_lorem_ipsum = nil
         def self.arr_words_lorem_ipsum
-          @@arr_words_lorem_ipsum = @@words_lorem_ipsum.split(' ') if @@arr_words_lorem_ipsum.nil?
+          @@arr_words_lorem_ipsum = @@words_lorem_ipsum.split if @@arr_words_lorem_ipsum.nil?
           @@arr_words_lorem_ipsum
         end
 
