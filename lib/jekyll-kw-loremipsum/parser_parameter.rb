@@ -57,14 +57,20 @@ module Jekyll
 
         def to_s
           if use_words
-            format('W: %04d (%s)', @words, to_str_random)
+            format(
+              'W: %<amount_words>04d (%<random_or_sorted>s)',
+              amount_words: @words,
+              random_or_sorted: to_str_random
+            )
           else
-            format('P: %04d (%s) MiW: %04d MaW: %04d', @paras, to_str_random, @minw, @maxw)
+            format(
+              'P: %<amount_paragraphs>04d (%<random_or_sorted>s) MiW: %<min_per_paragraph>04d MaW: %<max_per_paragraph>04d',
+              amount_paragraphs: @paras,
+              random_or_sorted: to_str_random,
+              min_per_paragraph: @minw,
+              max_per_paragraph: @maxw
+            )
           end
-        end
-
-        def echo
-          puts to_s
         end
       end
     end
