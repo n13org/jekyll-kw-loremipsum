@@ -66,7 +66,7 @@ module Jekyll
 
           delimiter = "\n\n"
 
-          assert_equal "Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}", tag.render(context)
+          assert_equal "Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor#{delimiter}Lorem ipsum dolor", tag.render(context)
         end
       end
     end
