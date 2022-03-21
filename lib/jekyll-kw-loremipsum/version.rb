@@ -4,7 +4,7 @@ module Jekyll
   module KargWare
     module LoremIpsum
       RUBYGEM_NAME = 'jekyll-kw-loremipsum'
-      VERSION = '0.1.1'
+      VERSION = '0.2.0'
       JEKYLL_TAGNAME = 'kw_lorem_ipsum'
     end
   end
