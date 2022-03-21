@@ -23,9 +23,7 @@ module Jekyll
           @my_string = options['my_string']
         end
 
-        private
-
-        def generate_option_hash(options)
+        private def generate_option_hash(options)
           DEFAULT_CONFIG.merge(options)
         rescue TypeError
           DEFAULT_CONFIG
