@@ -12,6 +12,11 @@ def version
   Jekyll::KargWare::LoremIpsum::VERSION
 end
 
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop) do |cop|
+  cop.options = ['--display-cop-names']
+end
+
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
