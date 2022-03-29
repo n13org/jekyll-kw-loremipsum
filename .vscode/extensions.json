@@ -9,6 +9,12 @@
     // Ruby
     "rebornix.ruby",
 
+    // ruby-rubocop
+    "misogi.ruby-rubocop",
+
+    // Ruby Test Explorer
+    "connorshea.vscode-ruby-test-adapter",
+
     // Code Spell Checker
     "streetsidesoftware.code-spell-checker",
 
