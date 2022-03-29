@@ -1,5 +1,5 @@
 name: CI
-on: 
+on:
   push:
     branches:
       - "*"
@@ -10,7 +10,7 @@ on:
       - "*"
     tags-ignore:
       - "*"
-jobs:  
+jobs:
   pre-build:
     runs-on: ubuntu-latest
     steps:
