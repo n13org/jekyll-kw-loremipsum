@@ -3,9 +3,9 @@
 require 'test_helper'
 
 module Jekyll
-  module <Company>
-    module <Project>
-      class <FTName | pascalcase>Test < Minitest::Test
+  module <Company | pascalcase>
+    module <Project | pascalcase>
+      class <Class | pascalcase>Test < Minitest::Test
         def test_fail_always
           assert false
         end

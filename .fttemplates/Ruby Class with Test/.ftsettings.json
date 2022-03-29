@@ -1,7 +1,11 @@
 {
+  "omitFTName": true,
   "omitParentDirectory": true,
+  "overwriteExistingFiles": "prompt",
   "customVariables": [
     "Company=>KargWare",
-    "Project=>JekyllPlugInTemplate"
+    "Project=>NewPlugIn",
+    "Class=>MyClass",
+    "ProjectName=>jekyll-kw-newplugin"
   ]
 }
