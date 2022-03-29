@@ -8,7 +8,7 @@ gem "rake", "~> 13.0"
 gem "minitest", "~> 5.0"
 gem "minitest-reporters"
 gem "minitest-profile"
-gem 'simplecov', '~> 0.17.1'
+gem 'simplecov', '~> 0.21.2'
 
 gem "rubocop", "~> 1.3"
 gem "rubocop-minitest", "~> 0.18.0"
