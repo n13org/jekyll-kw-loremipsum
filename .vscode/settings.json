@@ -44,6 +44,7 @@
   ],
   "cSpell.words": [
     "docu",
+    "gemfile",
     "ftsettings",
     "fttemplates",
     "htdocs",
@@ -51,12 +52,15 @@
     "jekyll",
     "Karg",
     "KargWare",
+    "mkdir",
     "newplugin",
     "Nicolas",
     "paramcase",
     "pascalcase",
     "Rakefile",
     "rdoc",
+    "rubocop",
+    "simplecov",
     "Struct",
     "whitesource"
   ],
