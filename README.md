@@ -7,6 +7,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/dec6df8009e83158a564/maintainability)](https://codeclimate.com/github/n13org/jekyll-kw-loremipsum/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dec6df8009e83158a564/test_coverage)](https://codeclimate.com/github/n13org/jekyll-kw-loremipsum/test_coverage)
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=n13org_jekyll-kw-loremipsum&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=n13org_jekyll-kw-loremipsum)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=n13org_jekyll-kw-loremipsum&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=n13org_jekyll-kw-loremipsum)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=n13org_jekyll-kw-loremipsum&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=n13org_jekyll-kw-loremipsum)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=n13org_jekyll-kw-loremipsum&metric=coverage)](https://sonarcloud.io/summary/new_code?id=n13org_jekyll-kw-loremipsum)
+
 [![Gem Version](https://badge.fury.io/rb/jekyll-kw-loremipsum.svg)](https://badge.fury.io/rb/jekyll-kw-loremipsum)
 
 LoremIpsum is a [jekyll][Jekyll Website] plugin. The plugin can be used as a **tag** for jekyll. You can get some dummy text for your webpage, without copy & pasting the Lorem Ipsum words yourself.
