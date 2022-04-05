@@ -11,7 +11,7 @@ gem "minitest-profile"
 gem 'simplecov', '~> 0.21.2'
 
 gem "rubocop", "~> 1.3"
-gem "rubocop-minitest", "~> 0.18.0"
+gem "rubocop-minitest", "~> 0.19.0"
 gem "rubocop-performance", "~> 1.9"
 gem "rubocop-rake", "~> 0.6.0"
 
