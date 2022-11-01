@@ -6,9 +6,12 @@ gemspec
 gem "rake", "~> 13.0"
 
 gem "minitest", "~> 5.0"
-gem "minitest-reporters"
 gem "minitest-profile"
+gem "minitest-reporters"
+
 gem 'simplecov', '~> 0.21.2'
+gem "simplecov-html", "~> 0.12.3", require: false
+gem 'simplecov_json_formatter', '~> 0.1.4', require: false
 
 gem "rubocop", "~> 1.3"
 gem "rubocop-minitest", "~> 0.18.0"

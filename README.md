@@ -82,6 +82,10 @@ TODO: Add notes, hints and learnings
 
 TODO: How to contribute, e.g. [CONTRIBUTING.md](CONTRIBUTING.md)
 
+* Run linting with rubocop `bundle exec rake rubocop`
+* Run test with the latest version `bundle exec rake test`
+* Run tests with **all** appraisal `bundle exec rake appraisaljobs`
+
 ## 🏆 Kudos
 
 TODO: Add big thanks and kudos persons / links / blogs
