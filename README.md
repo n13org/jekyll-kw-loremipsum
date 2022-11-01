@@ -16,6 +16,8 @@
 
 LoremIpsum is a [jekyll][Jekyll Website] plugin. The plugin can be used as a **tag** for jekyll. You can get some dummy text for your webpage, without copy & pasting the Lorem Ipsum words yourself.
 
+## 🔥 Usage
+
 - Use the tag `{% kw_lorem_ipsum 30w %}` to get 30 different words.
 - Use the tag `{% kw_lorem_ipsum random 4p 7miw 12maw %}` to get 4 paragraphs between 7 and 12 words.
 
@@ -42,9 +44,7 @@ plugins:
   - jekyll-kw-loremipsum
 ```
 
-> The Plug-In is tested with jekyll 3.8, 3.9, 4.0, 4.1 and 4.2!
-
-## 🔥 Usage
+> The Plug-In is tested with jekyll 3.8, 3.9, 4.0, 4.1, 4.2 and 4.3!
 
 ## ⏰ Changelog
 

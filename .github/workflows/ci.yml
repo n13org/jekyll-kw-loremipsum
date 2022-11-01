@@ -46,6 +46,7 @@ jobs:
           - jekyll_4.0
           - jekyll_4.1
           - jekyll_4.2
+          - jekyll_4.3
         exclude:
         - ruby: 2.5
           gemfile: gemfiles/jekyll_4.0.gemfile
@@ -53,6 +54,8 @@ jobs:
           gemfile: gemfiles/jekyll_4.1.gemfile
         - ruby: 2.5
           gemfile: gemfiles/jekyll_4.2.gemfile
+        - ruby: 2.5
+          gemfile: gemfiles/jekyll_4.3.gemfile
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     runs-on: ubuntu-latest

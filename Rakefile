@@ -24,6 +24,16 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
+# https://ruby.github.io/rake/doc/rakefile_rdoc.html#label-Comments
+# Execute bash commands from a Rakefile https://stackoverflow.com/a/14360488/10655742
+desc "Run all appraisal-jobs (Generate, Install and Run tests with versions)"
+task :appraisaljobs do
+  puts 'Run all appraisal-jobs (Run test with versions)'
+  sh "bundle exec appraisal generate"
+  sh "bundle exec appraisal install"
+  sh "bundle exec appraisal rake test"
+end
+
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
