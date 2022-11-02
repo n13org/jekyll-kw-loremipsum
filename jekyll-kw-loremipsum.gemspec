@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
                        ]
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "appraisal"
+  spec.add_development_dependency 'appraisal', '>= 2.4.1', '< 3.0'
 end
