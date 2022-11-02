@@ -77,3 +77,14 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Run Test
       run: bundle exec rake test
+    - name: fix code coverage paths
+      working-directory: ./coverage
+      run: |
+        sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.json
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      # with: 
+      #   projectBaseDir: ${GITHUB_WORKSPACE}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
