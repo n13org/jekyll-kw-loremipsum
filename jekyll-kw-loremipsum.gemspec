@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency 'jekyll', '~> 3.8'
 
   spec.required_ruby_version = '>= 2.5'
-  spec.add_dependency 'jekyll', '>= 3.8', '<= 4.3'
+  spec.add_dependency 'jekyll', '>= 3.8', '<= 4.4'
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.files         = Dir[
