@@ -40,7 +40,7 @@
     "body": [
       "# frozen_string_literal: true",
       "",
-      "require 'test_helper'",
+      "require_relative '../test_helper'",
       "",
       "module Jekyll",
       "  module ${1:KargWare}",
