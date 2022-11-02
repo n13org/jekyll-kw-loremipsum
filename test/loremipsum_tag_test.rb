@@ -32,8 +32,7 @@ module Jekyll
         # end
 
         def test_tag_two_words
-          default_plugin_config = {
-          }
+          default_plugin_config = {}
 
           context = @stubbed_context.new(
             site: @stubbed_context_site.new(default_plugin_config)
@@ -50,8 +49,7 @@ module Jekyll
         end
 
         def test_tag_three_paragraphs
-          default_plugin_config = {
-          }
+          default_plugin_config = {}
 
           context = @stubbed_context.new(
             site: @stubbed_context_site.new(default_plugin_config)
