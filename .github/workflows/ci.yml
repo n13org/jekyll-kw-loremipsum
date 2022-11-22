@@ -11,66 +11,69 @@ on:
     tags-ignore:
       - "*"
 jobs:
-  pre-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-      - name: bundle install
-        run: |
-          gem install bundler
-          bundle config set --local with ci
-          bundle install --jobs 4 --retry 3
-      - name: Generate appraisal files
-        run: bundle exec appraisal generate
-      - uses: actions/upload-artifact@v3
-        with:
-          name: appraisal-files
-          path: gemfiles/
-          if-no-files-found: error
-          retention-days: 1
+  # pre-build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Set up Ruby 2.7
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 2.7
+  #         bundler-cache: true
+  #     - name: bundle install
+  #       run: |
+  #         gem install bundler
+  #         bundle config set --local with ci
+  #         bundle install --jobs 4 --retry 3
+  #     - name: Generate appraisal files
+  #       run: bundle exec appraisal generate
+  #     - uses: actions/upload-artifact@v3
+  #       with:
+  #         name: appraisal-files
+  #         path: gemfiles/
+  #         if-no-files-found: error
+  #         retention-days: 1
   build:
-    needs: pre-build
+    # needs: pre-build
     strategy:
       matrix:
         # ruby: [2.5, 2.6, 2.7, 3.0]
         # ruby: [2.5, 2.6, 2.7]
-        ruby: [2.7, 3.0, 3.1]
-        gemfile:
-          - jekyll_3.8
-          - jekyll_3.9
-          - jekyll_4.0
-          - jekyll_4.1
-          - jekyll_4.2
-          - jekyll_4.3
-        exclude:
-        - ruby: 2.5
-          gemfile: gemfiles/jekyll_4.0.gemfile
-        - ruby: 2.5
-          gemfile: gemfiles/jekyll_4.1.gemfile
-        - ruby: 2.5
-          gemfile: gemfiles/jekyll_4.2.gemfile
-        - ruby: 2.5
-          gemfile: gemfiles/jekyll_4.3.gemfile
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+        # ruby: [2.7, 3.0, 3.1]
+        ruby: [3.1]
+    #     gemfile:
+    #       - jekyll_3.8
+    #       - jekyll_3.9
+    #       - jekyll_4.0
+    #       - jekyll_4.1
+    #       - jekyll_4.2
+    #       - jekyll_4.3
+    #     exclude:
+    #     - ruby: 2.5
+    #       gemfile: gemfiles/jekyll_4.0.gemfile
+    #     - ruby: 2.5
+    #       gemfile: gemfiles/jekyll_4.1.gemfile
+    #     - ruby: 2.5
+    #       gemfile: gemfiles/jekyll_4.2.gemfile
+    #     - ruby: 2.5
+    #       gemfile: gemfiles/jekyll_4.3.gemfile
+    # env:
+    #   BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Set up Ruby ${{ matrix.ruby }}
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - name: Create folder 'gemfiles'
-      run: mkdir -p gemfiles/
-    - uses: actions/download-artifact@v3
-      with:
-        name: appraisal-files
-        path: gemfiles/
+    # - name: Create folder 'gemfiles'
+    #   run: mkdir -p gemfiles/
+    # - uses: actions/download-artifact@v3
+    #   with:
+    #     name: appraisal-files
+    #     path: gemfiles/
     - name: bundle install
       run: |
         gem install bundler
@@ -84,7 +87,8 @@ jobs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       if: |
-        github.ref == 'refs/heads/master' 
+        false
+        || github.ref == 'refs/heads/master'
         || github.ref == 'refs/heads/main'
         || github.ref == 'refs/heads/develop'
       # with: 
