@@ -83,6 +83,10 @@ jobs:
         sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.json
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
+      if: |
+        github.ref == 'refs/heads/master' 
+        || github.ref == 'refs/heads/main'
+        || github.ref == 'refs/heads/develop'
       # with: 
       #   projectBaseDir: ${GITHUB_WORKSPACE}
       env:
